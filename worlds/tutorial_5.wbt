@@ -1,0 +1,85 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+
+WorldInfo {
+  basicTimeStep 16
+  contactProperties [
+    DEF dumbbell ContactProperties {
+      coulombFriction [
+        0
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.20475262584878487 0.5690456461965114 0.7964065637303741 0.8487156848689691
+  position -1.0648231137275088 -0.7836869354074816 0.8916190399449335
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+}
+Solid {
+  translation 0 0.475 0.2
+  rotation 0 1 0 1.5708
+  children [
+    DEF G0 Group {
+      children [
+        Pose {
+          translation 0 0 0.05
+          children [
+            Shape {
+              appearance PBRAppearance {
+              }
+              geometry Sphere {
+                radius 0.03
+                subdivision 2
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0 0 -0.05
+          children [
+            Shape {
+              appearance PBRAppearance {
+              }
+              geometry Sphere {
+                radius 0.03
+                subdivision 2
+              }
+            }
+          ]
+        }
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Cylinder {
+            height 0.1
+            radius 0.01
+          }
+        }
+      ]
+    }
+  ]
+  name "dumbbell"
+  description "dumbbell"
+  contactMaterial "dumbbell"
+  boundingObject USE G0
+  physics Physics {
+    density -1
+    mass 2
+    centerOfMass [
+      0 0 0.01
+    ]
+    damping Damping {
+      linear 0.1
+      angular 0.1
+    }
+  }
+}
